@@ -2,18 +2,18 @@ package green
 
 class Compare {
     boolean expected
-    Closure next
+    def next
 
-    private Compare(Closure target, boolean expected) {
+    private Compare(Closure target, expected) {
         this.next = target
         this.expected = expected
     }
 
-    static Compare That(Closure next) {
+    static Compare that(Closure next) {
         return new Compare(next, true)
     }
 
-    static Compare Not(Closure next) {
+    static Compare not(Closure next) {
         return new Compare({ !next.call(it) }, false)
     }
 
